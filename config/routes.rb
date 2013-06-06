@@ -1,4 +1,10 @@
 Teamorg2::Application.routes.draw do
+  resources :players
+
+
+  resources :games
+
+
   authenticated :user do
     root :to => 'home#index'
   end

@@ -1,0 +1,19 @@
+%p#notice= notice
+
+%p
+  %b Location:
+  = @game.location
+%p
+  %b Time:
+  = @game.time.strftime("%H:%M")
+%p
+  %b Date:
+  = @game.date
+
+%p
+= render 'players'
+%br
+
+= link_to 'Edit', edit_game_path(@game)
+\|
+= link_to 'Back', games_path

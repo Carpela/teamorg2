@@ -8,11 +8,34 @@
         = javascript_include_tag "application"
         = csrf_meta_tags
         = yield(:head)
+    %meta{:charset => "utf-8"}
+    %title Acacia 1.0
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+    %meta{:content => "", :name => "description"}
+    %meta{:content => "", :name => "keywords"}
+    %link{:href => "humans.txt", :rel => "author", :type => "text/plain"}
+    =stylesheet_link_tag "bootstrap.css"
+    =stylesheet_link_tag "app.css"
+    /[if lt IE 9] >
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <! [endif]
+    /favicon and touch icons
+    %link{:href => "/favicon.ico", :rel => "short icon"}
+    %link{:href => "apple-touch-icon-precomposed.png", :rel => "apple-touch-icon-precomposed"}
+    %link{:href => "apple-touch-icon-72x72-precomposed.png", :rel => "apple-touch-icon-precomposed", :sizes => "72x72"}
+    %link{:href => "apple-touch-icon-114x114-precomposed.png", :rel => "apple-touch-icon-precomposed", :sizes => "114x114"}
+    %link{:href => "apple-touch-icon-144x144-precomposed.png", :rel => "apple-touch-icon-precomposed", :sizes => "144x144"}
+    /%link{:href => "http://fonts.googleapis.com/css?family=Droid+Sans", :rel => "stylesheet"}/
+
+
+
+
   %body{:class => "#{controller_name} #{action_name}"}
     #container.container
       %header
         = render 'layouts/navigation'
-        = render 'layouts/messages'
+      = render 'layouts/messages'
+    .container
       #main{:role => "main"}
         = yield
       %footer

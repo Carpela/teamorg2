@@ -1,4 +1,35 @@
-%h3 Home
-- @users.each do |user|
-  %p
-    User: #{link_to user.name, user}
+.container
+.home-unit
+  = image_tag "home.png"
+.row
+  .span4
+    .hi-unit
+      =image_tag "thumb_1.png",:alt => "image" 
+    %h4 Football
+    %p Jumpers for Goalposts? Striding out onto Wembley's hallowed turf...
+    %p
+      %a.btn{:href => "#"} View details &raquo;
+  .span4
+    .hi-unit
+      =image_tag "thumb_2.png", :alt => "image"
+    %h4 Cricket
+    %p Ah! The crack of leather on willow
+    %p
+      %a.btn{:href => "#"} View details &raquo;
+  .span4
+    .hi-unit
+      =image_tag "thumb_3.png", :alt => "image"
+    %h4 Rugby
+    %p For those weekends when nothing compares to pissing in your mate's beer...
+    %p
+      %a.btn{:href => "#"} View details &raquo;
+%hr.h-edge/
+/ <!--      %footer
+/         %p.pull-left &copy; Copyright Holder 2012
+/         %p.pull-right
+/           Developed by
+/           %a{:href => "http://www.eamdevelopers.com/"} eAM Developers
+/     / JS Placed at the end of the document so the pages load faster
+/     %script{:src => "js/bootstrap.js"}
+/     %script{:src => "js/jquery.js"}
+/ -->
