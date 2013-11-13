@@ -1,23 +1,28 @@
-.container
-.home-unit
-  = image_tag "home.png"
+.row
+  .span12
+    .home-unit
+      .span8.offset2
+        /= image_tag "home.png"
+        .blurb
+          %h3 Organising this stuff is a pain. 
+          %h3 Let us help you out. 
+          %h3 We can help organise your sports team fixtures to make everything flow so much more smoothly. 
 .row
   .span4
-    .hi-unit
-      =image_tag "thumb_1.png",:alt => "image" 
+    .grassleft
     %h4 Football
     %p Jumpers for Goalposts? Striding out onto Wembley's hallowed turf...
     %p
       %a.btn{:href => "#"} View details &raquo;
   .span4
-    .hi-unit
-      =image_tag "thumb_2.png", :alt => "image"
+    .grasscentre
+      /=image_tag "thumb_2.png", :alt => "image"
     %h4 Cricket
     %p Ah! The crack of leather on willow
     %p
-      %a.btn{:href => "#"} View details &raquo;
+      %a.btn{:href => "../teams/new"} View details &raquo;
   .span4
-    .hi-unit
+    .grassright
       =image_tag "thumb_3.png", :alt => "image"
     %h4 Rugby
     %p For those weekends when nothing compares to pissing in your mate's beer...

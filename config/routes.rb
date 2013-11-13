@@ -1,4 +1,7 @@
 Teamorg2::Application.routes.draw do
+  resources :teams
+
+
   resources :players
 
 
