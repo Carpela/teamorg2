@@ -22,10 +22,4 @@ $(document).on('nested:fieldAdded', function(event){
   // it's a jQuery object already! Now you can find date input
   var dateField = field.find('.date');
   // and activate datepicker on it
-  $('input.datepicker').datepicker();
 });
-
-$('#game_time').timepicker();
-
-// $('#game_date').datepicker();
-
