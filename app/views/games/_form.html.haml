@@ -16,7 +16,6 @@
     = f.label :time
     = f.time_select :time, {:minute_interval => 15}
   .field
-    = f.label :date
-    = f.date_select :date
+    = f.input :date, :as => :datepicker, :input_html => { :type => "text" }
   .actions
     = f.submit 'Save'
