@@ -12,7 +12,7 @@
     = f.input :format
     = f.input :sides
   .field
-    = f.input :time, :as => :string, :input_html => {:class => 'bootstrap-timepicker'}
+    = f.input :time, :input_html => {:class => 'bootstrap-timepicker'}, :input_html => { :type => "text" }
   .field
     = f.input :date, :as => :datepicker, :input_html => { :type => "text" }
   .actions
