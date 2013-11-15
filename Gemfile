@@ -21,10 +21,14 @@ gem "launchy", ">= 2.1.2", :group => :test
 gem "capybara", ">= 2.0.1", :group => :test
 gem "factory_girl_rails", ">= 4.1.0", :group => [:development, :test]
 gem "devise", ">= 2.1.2"
-gem "quiet_assets", ">= 1.0.1", :group => :development
 gem "figaro", ">= 0.5.0"
-gem "better_errors", ">= 0.3.2", :group => :development
-gem "binding_of_caller", ">= 0.6.8", :group => :development
 gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
 gem 'bootstrap-sass'
-gem 'bootstrap-rails'
+gem 'anjlab-bootstrap-rails'
+gem 'inherited_resources'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'quiet_assets'
+end
