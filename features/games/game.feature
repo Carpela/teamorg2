@@ -2,7 +2,6 @@ Feature: Organise games
   In order to organise games
   An organiser
   Should be able to create games
-    @wip
     Scenario: Create Game
       Given I am signed in
       When I visit the new game page
