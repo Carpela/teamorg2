@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
+//= require bootstrap-timepicker
 //= require_tree .
 
 $(document).on('nested:fieldAdded', function(event){
@@ -23,3 +24,8 @@ $(document).on('nested:fieldAdded', function(event){
   // and activate datepicker on it
   $('input.datepicker').datepicker();
 });
+
+$('#game_time').timepicker();
+
+// $('#game_date').datepicker();
+

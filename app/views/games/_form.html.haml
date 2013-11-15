@@ -7,14 +7,12 @@
           %li= msg
 
   .field
-    = f.label :location
-    = f.text_field :location
+    = f.input :location
   .field
     = f.input :format
     = f.input :sides
   .field
-    = f.label :time
-    = f.time_select :time, {:minute_interval => 15}
+    = f.input :time, :as => :string, :input_html => {:class => 'bootstrap-timepicker'}
   .field
     = f.input :date, :as => :datepicker, :input_html => { :type => "text" }
   .actions

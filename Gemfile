@@ -16,7 +16,8 @@ gem 'jquery-ui-themes'
 gem 'jquery-ui-form'
 
 
-gem 'bootstrap-datepicker-rails'
+# gem 'bootstrap-datepicker-rails'
+gem 'bootstrap-timepicker-rails', :require => 'bootstrap-timepicker-rails', :git => 'git://github.com/tispratik/bootstrap-timepicker-rails.git'
 gem 'bootstrap-sass'
 gem 'anjlab-bootstrap-rails'
 
