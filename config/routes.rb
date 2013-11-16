@@ -6,7 +6,9 @@ Teamorg2::Application.routes.draw do
       post 'send_invites'
     end
     resources :players
-    resources :game_players
+    resources :game_players do
+      get 'change_status'
+    end
   end
 
   authenticated :user do
