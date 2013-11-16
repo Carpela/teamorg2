@@ -11,14 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131113144724) do
+ActiveRecord::Schema.define(:version => 20131115222121) do
 
   create_table "game_players", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.integer  "game_id"
     t.integer  "player_id"
+    t.string   "status",     :default => "players"
   end
+
+  add_index "game_players", ["status"], :name => "index_game_players_on_status"
 
   create_table "games", :force => true do |t|
     t.string   "location"

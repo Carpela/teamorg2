@@ -12,14 +12,30 @@
 .row-fluid
   .span3
     Selected
+    - @game.game_players.selected.each do |assoc|
+      %p
+        %strong= assoc.player.email
   .span3
     Available
+    - @game.game_players.available.each do |assoc|
+      %p
+        %strong= assoc.player.email
   .span3
     Players
+    - @game.game_players.players.each do |assoc|
+      %p
+        %strong= assoc.player.email
   .span3
     Unavailable
+    - @game.game_players.unavailable.each do |assoc|
+      %p
+        %strong= assoc.player.email
+.row
+  .span3.pull-right
+    = link_to 'Send invites', send_invites_game_path(@game), method: :post, class: 'btn'
 %p
 = render 'players'
+= link_to 'Add player', new_game_player_path(@game)
 %br
 
 = link_to 'Edit', edit_game_path(@game)
