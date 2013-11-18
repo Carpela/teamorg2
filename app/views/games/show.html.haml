@@ -11,7 +11,7 @@
   = @game.date
 .row-fluid
   .span3
-    %table.table
+    %table.table.table-striped
       %thead
         %tr
           %th 
@@ -26,7 +26,7 @@
             %td
               = link_to '->', game_game_player_change_status_url(assoc.game, assoc, status: :available), {:class => 'btn btn-primary btn-mini'}
   .span3
-    %table.table
+    %table.table.table-striped
       %thead
         %tr
           %th 
@@ -42,7 +42,7 @@
               = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :selected), {:class => 'btn btn-success btn-mini'}
               = link_to '->', game_game_player_change_status_url(assoc.game, assoc, status: :unavailable), {:class => 'btn btn-danger btn-mini'}
   .span3
-    %table.table
+    %table.table.table-striped
       %thead
         %tr
           %th 
@@ -57,7 +57,7 @@
             %td
               = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :available), {:class => 'btn btn-primary btn-mini'}
   .span3
-    %table.table
+    %table.table.table-striped
       %thead
         %tr
           %th 
