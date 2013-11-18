@@ -20,6 +20,7 @@
     - @game.game_players.available.each do |assoc|
       %p
         %strong= assoc.player.email
+        = link_to 'Select', game_game_player_change_status_url(assoc.game, assoc, status: :selected)
   .span3
     Players
     - @game.game_players.players.each do |assoc|
