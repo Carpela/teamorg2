@@ -1,12 +1,15 @@
 Teamorg2::Application.routes.draw do
   resources :teams
 
-
-  resources :players
-
-
-  resources :games
-
+  resources :games do
+    member do
+      post 'send_invites'
+    end
+    resources :players
+    resources :game_players do
+      get 'change_status'
+    end
+  end
 
   authenticated :user do
     root :to => 'home#index'

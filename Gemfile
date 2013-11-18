@@ -49,3 +49,10 @@ gem "devise", ">= 2.1.2"
 gem "figaro", ">= 0.5.0"
 gem 'inherited_resources'
 
+group :development do
+  gem 'letter_opener'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'quiet_assets'
+  gem 'meta_request'
+end

@@ -11,15 +11,74 @@
   = @game.date
 .row-fluid
   .span3
-    Selected
+    %table.table
+      %thead
+        %tr
+          %th 
+            .btn.btn-success
+              Selected
+          %th 
+      %tbody
+        - @game.game_players.selected.each do |assoc|
+          %tr
+            %td
+              = assoc.player.email
+            %td
+              = link_to '->', game_game_player_change_status_url(assoc.game, assoc, status: :available), {:class => 'btn btn-primary btn-mini'}
   .span3
-    Available
+    %table.table
+      %thead
+        %tr
+          %th 
+            .btn.btn-primary
+              Available
+          %th 
+      %tbody
+        - @game.game_players.available.each do |assoc|
+          %tr
+            %td
+              = assoc.player.email
+            %td 
+              = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :selected), {:class => 'btn btn-success btn-mini'}
+              = link_to '->', game_game_player_change_status_url(assoc.game, assoc, status: :unavailable), {:class => 'btn btn-danger btn-mini'}
   .span3
-    Players
+    %table.table
+      %thead
+        %tr
+          %th 
+            .btn.btn-danger
+              Unavailable
+          %th
+      %tbody
+        - @game.game_players.unavailable.each do |assoc|
+          %tr
+            %td
+              = assoc.player.email
+            %td
+              = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :available), {:class => 'btn btn-primary btn-mini'}
   .span3
-    Unavailable
+    %table.table
+      %thead
+        %tr
+          %th 
+            .btn
+              Invited
+          %th 
+      %tbody
+        - @game.game_players.players.each do |assoc|
+          %tr
+            %td
+              = assoc.player.email
+            %td
+              .dl-horizontal
+                = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :available), {:class => 'btn btn-primary btn-mini'}
+                = link_to '->', game_game_player_change_status_url(assoc.game, assoc, status: :unavailable), {:class => 'btn btn-danger btn-mini'}
+.row
+  .span3.pull-right
+    = link_to 'Send invites', send_invites_game_path(@game), method: :post, class: 'btn'
 %p
 = render 'players'
+= link_to 'Add player', new_game_player_path(@game)
 %br
 
 = link_to 'Edit', edit_game_path(@game)
