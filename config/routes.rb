@@ -5,7 +5,12 @@ Teamorg2::Application.routes.draw do
     member do
       post 'send_invites'
     end
-    resources :players
+    resources :players do
+      collection do
+        get 'gmail'
+      end
+    end
+
     resources :game_players do
       get 'change_status'
     end
