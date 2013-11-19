@@ -71,9 +71,8 @@
             %td
               = assoc.player.name
             %td
-              .dl-horizontal
-                = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :available), {:class => 'btn btn-primary btn-mini'}
-                = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :unavailable), {:class => 'btn btn-danger btn-mini'}
+              = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :available), {:class => 'btn btn-primary btn-mini'}
+              = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :unavailable), {:class => 'btn btn-danger btn-mini'}
     = link_to 'Add player', new_game_player_path(@game)          
 .row
   .span3.pull-right
