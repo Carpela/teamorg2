@@ -1,5 +1,5 @@
 class PlayersMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "keiran@carpela.com"
 
   def invites(game_player)
     @game_player = game_player
