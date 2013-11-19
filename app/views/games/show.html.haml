@@ -82,6 +82,10 @@
   = link_to 'Add player', new_game_player_path(@game)
 %p
   = link_to 'Get from gmail contacts', GmailContacts::Google.authentication_url(gmail_game_players_url(@game))
+%p
+  = simple_form_for :group, url: add_from_group_game_path(@game) do |f|
+    = f.input :group_id, as: :select, collection: current_user.groups, include_blank: false, label: 'Add from group:'
+    = f.submit 'Add'
 %br
 = link_to 'Edit', edit_game_path(@game)
 \|
