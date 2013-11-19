@@ -78,7 +78,11 @@
 .row
   .span3.pull-right
     = link_to 'Send invites', send_invites_game_path(@game), method: :post, class: 'btn'
-
+%p
+  = link_to 'Add player', new_game_player_path(@game)
+%p
+  = link_to 'Get from gmail contacts', GmailContacts::Google.authentication_url(gmail_game_players_url(@game))
+%br
 = link_to 'Edit', edit_game_path(@game)
 \|
 = link_to 'Back', games_path

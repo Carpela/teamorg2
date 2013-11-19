@@ -50,6 +50,7 @@ gem "rspec-rails", ">= 2.11.4", :group => [:development, :test]
 gem "devise", ">= 2.1.2"
 gem "figaro", ">= 0.5.0"
 gem 'inherited_resources'
+gem 'gmail-contacts', :require => "gmail-contacts"
 
 group :development do
   gem 'letter_opener'
