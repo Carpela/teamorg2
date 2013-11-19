@@ -22,4 +22,9 @@ Teamorg2::Application.routes.draw do
   root :to => "home#index"
   devise_for :users
   resources :users
+  resources :groups do
+    member do
+      post 'add_player'
+    end
+  end
 end
