@@ -22,7 +22,7 @@
         - @game.game_players.selected.each do |assoc|
           %tr
             %td
-              = assoc.player.email
+              = assoc.player.name
             %td
               = link_to '->', game_game_player_change_status_url(assoc.game, assoc, status: :available), {:class => 'btn btn-primary btn-mini'}
   .span3
@@ -37,7 +37,7 @@
         - @game.game_players.available.each do |assoc|
           %tr
             %td
-              = assoc.player.email
+              = assoc.player.name
             %td 
               = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :selected), {:class => 'btn btn-success btn-mini'}
               = link_to '->', game_game_player_change_status_url(assoc.game, assoc, status: :unavailable), {:class => 'btn btn-danger btn-mini'}
@@ -53,7 +53,7 @@
         - @game.game_players.unavailable.each do |assoc|
           %tr
             %td
-              = assoc.player.email
+              = assoc.player.name
             %td
               = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :available), {:class => 'btn btn-primary btn-mini'}
   .span3
@@ -69,7 +69,7 @@
         - @game.game_players.players.each do |assoc|
           %tr
             %td
-              = assoc.player.email
+              = assoc.player.name
             %td
               .dl-horizontal
                 = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :available), {:class => 'btn btn-primary btn-mini'}
