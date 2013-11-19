@@ -57,6 +57,7 @@
             %td
               = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :available), {:class => 'btn btn-primary btn-mini'}
   .span3
+    = link_to 'Add player', new_game_player_path(@game) 
     %table.table.table-striped
       %thead
         %tr
