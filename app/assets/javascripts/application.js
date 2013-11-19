@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require bootstrap-timepicker
+//= require fancybox
+//= require rails.validations
+//= require rails.validations.simple_form
 //= require_tree .
 
 $(document).on('nested:fieldAdded', function(event){
