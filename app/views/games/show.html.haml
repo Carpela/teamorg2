@@ -10,6 +10,11 @@
   %b Date:
   = @game.date
 .row-fluid
+  .span12
+    = link_to 'Send Chase Up', send_chasing_up_game_path(@game), method: :post, class: 'btn'
+    = link_to 'Send invites', send_invites_game_path(@game), method: :post, class: 'btn'
+
+.row-fluid
   .span3
     %table.table.table-striped
       %thead
@@ -69,9 +74,7 @@
         - @game.game_players.players.each do |assoc|
           = render partial: 'players/player', locals: {gameplayer: assoc}
     = link_to 'Add player', new_game_player_path(@game), remote: true
-.row
-  .span3.pull-right
-    = link_to 'Send invites', send_invites_game_path(@game), method: :post, class: 'btn'
+
 %p
   = link_to 'Add player', new_game_player_path(@game), remote: true
 %p

@@ -4,6 +4,7 @@ Teamorg2::Application.routes.draw do
   resources :games do
     member do
       post 'send_invites'
+      post 'send_chasing_up'
       post 'add_from_group'
     end
     resources :players do
