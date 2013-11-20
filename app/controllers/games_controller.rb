@@ -31,10 +31,13 @@ class GamesController < InheritedResources::Base
 
   def send_chasing_up
     @game = Game.find params[:id]
-    @game.game_players.players.where(status: "players" || "available").each do |game_player|
+    @count = 0
+    @game.game_players.where(status: "available" || "players").each do |game_player|
       PlayersMailer.chasing_up(game_player).deliver
+      @count += 1
     end
-    redirect_to game_path(@game), notice: 'Chase Up sent'
+    redirect_to game_path(@game), notice: 'Chase Up sent' + @count.to_s
+   
   end
 
   def add_from_group
