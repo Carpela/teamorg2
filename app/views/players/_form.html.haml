@@ -17,3 +17,6 @@
     = f.text_field :phone
   .actions
     = f.submit 'Save'
+
+
+= link_to 'Get from gmail contacts', GmailContacts::Google.authentication_url(gmail_game_players_url(@game))
