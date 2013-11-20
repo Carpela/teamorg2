@@ -18,6 +18,11 @@
 
 @import "bootstrap";
 
+table {
+        width:100% !important;
+        max-width:100% !important;
+    }
+    
 .time {
   width: 60px;
   display:inline;
