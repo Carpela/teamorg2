@@ -1,6 +1,6 @@
 Teamorg2::Application.routes.draw do
   resources :teams
-
+  resources :players
   resources :games do
     member do
       post 'send_invites'
