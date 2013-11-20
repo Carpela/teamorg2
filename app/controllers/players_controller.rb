@@ -1,14 +1,22 @@
 class PlayersController < InheritedResources::Base
   before_filter :set_game
+  respond_to :js, only: :new
 
   def create
     @player = @game.players.build params[:player]
     if @player.valid?
-      @game.game_players.create player: @player
-      redirect_to @game
+      @gameplayer = @game.game_players.create player: @player
+      respond_to do |f|
+        f.html { redirect_to @game }
+        f.js
+      end
     else
       render :new
     end
+  end
+
+  def gmail
+
   end
 
   private
