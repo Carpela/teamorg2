@@ -1,12 +1,21 @@
 Teamorg2::Application.routes.draw do
   resources :teams
 
+  resources :games do
+    member do
+      post 'send_invites'
+      post 'add_from_group'
+    end
+    resources :players do
+      collection do
+        get 'gmail'
+      end
+    end
 
-  resources :players
-
-
-  resources :games
-
+    resources :game_players do
+      get 'change_status'
+    end
+  end
 
   authenticated :user do
     root :to => 'home#index'
@@ -14,4 +23,9 @@ Teamorg2::Application.routes.draw do
   root :to => "home#index"
   devise_for :users
   resources :users
+  resources :groups do
+    member do
+      post 'add_player'
+    end
+  end
 end

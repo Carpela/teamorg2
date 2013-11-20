@@ -1,4 +1,4 @@
-= form_for @player do |f|
+= simple_form_for @game.players.build, url: game_players_path(@game), validate: true, remote: request.xhr? do |f|
   - if @player.errors.any?
     #error_explanation
       %h2= "#{pluralize(@player.errors.count, "error")} prohibited this player from being saved:"
@@ -17,3 +17,6 @@
     = f.text_field :phone
   .actions
     = f.submit 'Save'
+
+
+= link_to 'Get from gmail contacts', GmailContacts::Google.authentication_url(gmail_game_players_url(@game))
