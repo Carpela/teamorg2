@@ -28,4 +28,12 @@ class GamesController < InheritedResources::Base
     end
     redirect_to game_path(@game), notice: 'Invites were sent'
   end
-end
+
+  def send_chasing_up
+    @game = Game.find params[:id]
+    @game.game_players.players.where(status: "players").each do |game_player|
+      PlayersMailer.invites(game_player).deliver
+    end
+    redirect_to game_path(@game), notice: 'Invites were sent'
+  end
+
