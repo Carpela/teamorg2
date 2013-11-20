@@ -1,4 +1,4 @@
-= simple_form_for @game.players.build, url: game_players_path(@game) do |f|
+= simple_form_for @game.players.build, url: game_players_path(@game), validate: true, remote: request.xhr? do |f|
   - if @player.errors.any?
     #error_explanation
       %h2= "#{pluralize(@player.errors.count, "error")} prohibited this player from being saved:"

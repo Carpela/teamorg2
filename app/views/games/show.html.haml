@@ -58,8 +58,7 @@
               = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :available), {:class => 'btn btn-primary btn-mini'}
   .span3
     = link_to 'Add player', new_game_player_path(@game) 
-    = link_to 'Get from gmail contacts', GmailContacts::Google.authentication_url(gmail_game_players_url(@game))
-    %table.table.table-striped
+    %table.table.table-striped.players-list
       %thead
         %tr
           %th 
@@ -68,18 +67,13 @@
           %th 
       %tbody
         - @game.game_players.players.each do |assoc|
-          %tr
-            %td
-              = assoc.player.name
-            %td
-              = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :available), {:class => 'btn btn-primary btn-mini'}
-              = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :unavailable), {:class => 'btn btn-danger btn-mini'}
-    = link_to 'Add player', new_game_player_path(@game)          
+          = render partial: 'players/player', locals: {gameplayer: assoc}
+    = link_to 'Add player', new_game_player_path(@game), remote: true
 .row
   .span3.pull-right
     = link_to 'Send invites', send_invites_game_path(@game), method: :post, class: 'btn'
 %p
-  = link_to 'Add player', new_game_player_path(@game)
+  = link_to 'Add player', new_game_player_path(@game), remote: true
 %p
   = link_to 'Get from gmail contacts', GmailContacts::Google.authentication_url(gmail_game_players_url(@game))
 %p

@@ -1,3 +1,5 @@
 $('tr[data-email="<%= @player.email %>"]').fadeOut(function(){
   $(this).remove();
 });
+$('.players-list tbody').append('<%= j render partial: 'players/player', locals: {gameplayer: @gameplayer} %>');
+$.fancybox.close();

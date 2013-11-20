@@ -1,0 +1,7 @@
+%tr
+  %td
+    = gameplayer.player.name
+  %td
+    .dl-horizontal
+      = link_to '<-', game_game_player_change_status_url(gameplayer.game, gameplayer, status: :available), {:class => 'btn btn-primary btn-mini'}
+      = link_to '<-', game_game_player_change_status_url(gameplayer.game, gameplayer, status: :unavailable), {:class => 'btn btn-danger btn-mini'}
