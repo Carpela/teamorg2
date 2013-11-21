@@ -8,5 +8,6 @@
 
   .field
     = f.input :name
+    = f.input :game_id, as: :hidden, input_html: {value: params[:game_id].presence}
   .actions
     = f.submit 'Save'

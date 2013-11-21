@@ -5,15 +5,11 @@
       %ul
         - @game.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.input :location
-  .field
-    = f.input :format
-    = f.input :sides
-  .field
-    = f.input :time
-  .field
-    = f.input :date, :as => :datepicker, :input_html => { :type => "text" }
+  = f.input :location, :placeholder => 'Location', :label => false
+  = f.input :sides, :placeholder => 'Number of Teams', :label => false
+  = f.input :format, :placeholder => 'Players per Team', :label => false
+  = f.input :date, :as => :datepicker, :input_html => { :type => "text" }, :placeholder => 'When?', :label => false
+  = f.input :time, :as => :time, :minute_step => 15
+ 
   .actions
-    = f.submit 'Save'
+    = f.submit 'Create Game', :class => 'btn btn-primary'
