@@ -32,7 +32,7 @@ class GamesController < InheritedResources::Base
   def add_from_group
     if params[:group][:group_id].present?
       game = Game.find params[:id]
-      group = Group.find params[:group][:group_id]
+      group = current_user.groups.find params[:group][:group_id]
       # Prevent duplicates
       group.players.each do |player|
         game.game_players.create player: player unless game.game_players.exists?(player_id: player.id)

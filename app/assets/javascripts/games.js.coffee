@@ -3,4 +3,4 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 $ ->
   $('input.datepicker').datepicker({ dateFormat: 'dd/mm/yy' })
-  $('.bootstrap-timepicker').timepicker();
+  #$('.bootstrap-timepicker').timepicker();

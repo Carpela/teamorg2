@@ -7,7 +7,7 @@ class GroupsController < InheritedResources::Base
   end
 
   def add_player
-    @group = Group.find params[:id]
+    @group = current_user.groups.find params[:id]
     @player = Player.new params[:player]
     if @player.save
       @group.players << @player
@@ -17,4 +17,9 @@ class GroupsController < InheritedResources::Base
     end
   end
 
+  protected
+
+  def begin_of_association_chain
+    current_user
+  end
 end
