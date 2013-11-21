@@ -1,0 +1,21 @@
+%p
+  Hi,
+  We're still short of players, so if you can play, please click the links below, or if you know someone else, add them in...
+  We've currently got 8 players, so we need two more. If we can;t get them by lunchtime tomorrow, I'll have to cancel the game, which would be a shame
+
+%p
+  = link_to "I'm available", game_game_player_change_status_url(@game_player.game, @game_player, status: :available)
+%p
+  = link_to "Sorry, I can't make it", game_game_player_change_status_url(@game_player.game, @game_player, status: :unavailable)
+
+%p
+  Time: 
+  = @game.time.strftime("%H:%M")
+%p
+  Date:
+  = @game.date.strftime("%d-%m-%Y")
+%p
+  Location:
+  = @game.location
+%p
+  = link_to 'Game page', game_path(@game)

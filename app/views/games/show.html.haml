@@ -6,7 +6,12 @@
       = @game.location
     %p
       = @game.time.strftime("%H:%M") +' '+ @game.date.to_s
-.row-fluid.row-fluid
+- if user_signed_in?
+  .row-fluid
+    .span12
+      = link_to 'Send Chase Up', send_chasing_up_game_path(@game), method: :post, class: 'btn'
+      = link_to 'Send invites', send_invites_game_path(@game), method: :post, class: 'btn'
+.row-fluid
   .span3
     %table.table.table-striped
       %thead
@@ -76,7 +81,7 @@
       = f.input :group_id, as: :select, collection: current_user.groups, include_blank: false, label: 'Add from group:'
       = f.submit 'Add'
   - if user_signed_in? && @game.players.any?
-      = link_to 'Add players to new group', new_group_path(game_id: @game.id), class: 'btn'
+    = link_to 'Add players to new group', new_group_path(game_id: @game.id), class: 'btn'
 %br
 = link_to 'Edit', edit_game_path(@game)
 \|

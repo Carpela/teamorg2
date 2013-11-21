@@ -6,4 +6,12 @@ class PlayersMailer < ActionMailer::Base
     @game = @game_player.game
     mail to: game_player.player.email, subject: 'Invite'
   end
+
+  def chasing_up(game_player)
+    @game_player = game_player
+    @game = @game_player.game
+    mail to: game_player.player.email, subject: 'Invite'
+  end
+
+
 end

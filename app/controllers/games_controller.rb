@@ -29,6 +29,17 @@ class GamesController < InheritedResources::Base
     redirect_to game_path(@game), notice: 'Invites were sent'
   end
 
+  def send_chasing_up
+    @game = Game.find params[:id]
+    @count = 0
+    @game.game_players.where(status: "available" || "players").each do |game_player|
+      PlayersMailer.chasing_up(game_player).deliver
+      @count += 1
+    end
+    redirect_to game_path(@game), notice: 'Chase Up sent' + @count.to_s
+   
+  end
+
   def add_from_group
     if params[:group][:group_id].present?
       game = Game.find params[:id]
