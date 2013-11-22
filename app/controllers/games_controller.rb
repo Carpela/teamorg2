@@ -32,7 +32,7 @@ class GamesController < InheritedResources::Base
   def send_chasing_up
     @game = Game.find params[:id]
     @count = 0
-    @game.game_players.where(status: "available" || "players").each do |game_player|
+    @game.game_players.where(:status => ["available", "players"]).each do |game_player|
       PlayersMailer.chasing_up(game_player).deliver
       @count += 1
     end
