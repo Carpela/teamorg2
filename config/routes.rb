@@ -3,8 +3,10 @@ Teamorg2::Application.routes.draw do
 
   resources :games do
     member do
-      post 'send_invites'
+      get 'email_form'
       post 'add_from_group'
+      post 'send_invites'
+      post 'send_emails'
     end
     resources :players do
       collection do

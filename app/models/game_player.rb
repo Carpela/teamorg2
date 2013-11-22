@@ -7,7 +7,7 @@ class GamePlayer < ActiveRecord::Base
   accepts_nested_attributes_for :player
   accepts_nested_attributes_for :game
 
-  scope :players, -> {where(status: :players).joins(:player)}
+  scope :invited, -> {where(status: :invited).joins(:player)}
   scope :available, -> {where(status: :available).joins(:player)}
   scope :unavailable, -> {where(status: :unavailable).joins(:player)}
   scope :selected, -> {where(status: :selected).joins(:player)}

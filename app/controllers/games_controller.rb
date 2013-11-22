@@ -40,4 +40,16 @@ class GamesController < InheritedResources::Base
     end
     redirect_to game, notice: 'Players were successfully added from group'
   end
+
+  def email_form
+    @game = Game.find params[:id]
+    @invite_email = InviteEmail.new game: @game
+  end
+
+  def send_emails
+    @game = Game.find params[:id]
+    @invite_email = InviteEmail.new params[:invite_email].merge(game: @game)
+    @invite_email.save
+  end
+
 end
