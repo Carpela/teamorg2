@@ -3,7 +3,8 @@
   - GmailContacts::Google.new(params[:token]).contacts.each do |contact|
     - next if @game.players.exists? email: contact.email
     %tr{data: {email: contact.email}}
-      %td= "#{contact.name}: #{contact.email}"
+      %td
+        = "#{contact.name}: #{contact.email}"
       %td
         = simple_form_for @game.players.build, url: game_players_path(@game), remote: true do |f|
           = f.input :email, input_html: {value: contact.email}, as: :hidden
