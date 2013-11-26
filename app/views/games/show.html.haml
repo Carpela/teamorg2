@@ -1,15 +1,33 @@
 / %p#notice= notice
 
 .row-fluid
-  .well
+  .span5
     %p
       = @game.location
     %p
       = @game.time.strftime("%H:%M") +' '+ @game.date.to_s
+    = link_to 'Edit', edit_game_path(@game)
+    \|
+    = link_to 'Back', games_path
     %p
       = link_to 'Send an email', email_form_game_path(@game), remote: true, class: 'btn'
+  .span5
+
+    - if user_signed_in?
+      = simple_form_for :group, url: add_from_group_game_path(@game) do |f|
+        .row
+          =f.label :group_id, label: 'Add from group:'
+          .span4
+            = f.input :group_id, as: :select, collection: current_user.groups, required: false, label: false
+          .span1
+            = f.submit 'Add'
+          .span5    
+            - if user_signed_in? && @game.players.any?
+              = link_to 'Add players to new group', new_group_path(game_id: @game.id), class: 'btn'
+    
+
 .row-fluid.row-fluid
-  .span3
+  .span2
     %table.table.table-striped
       %thead
         %tr
@@ -21,7 +39,7 @@
         - @game.game_players.selected.each do |assoc|
           %tr
             %td
-              = assoc.player.name
+              = link_to assoc.player.name, edit_player_path(assoc.player)
             %td
               = link_to '->', game_game_player_change_status_url(assoc.game, assoc, status: :available), {:class => 'btn btn-primary btn-mini'}
   .span3
@@ -36,7 +54,7 @@
         - @game.game_players.available.each do |assoc|
           %tr
             %td
-              = assoc.player.name
+              = link_to assoc.player.name, edit_player_path(assoc.player)
             %td 
               = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :selected), {:class => 'btn btn-success btn-mini'}
               = link_to '->', game_game_player_change_status_url(assoc.game, assoc, status: :unavailable), {:class => 'btn btn-danger btn-mini'}
@@ -52,10 +70,10 @@
         - @game.game_players.unavailable.each do |assoc|
           %tr
             %td
-              = assoc.player.name
+              = link_to assoc.player.name, edit_player_path(assoc.player)
             %td
               = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :available), {:class => 'btn btn-primary btn-mini'}
-  .span3
+  .span4
     / = link_to 'Get from gmail contacts', GmailContacts::Google.authentication_url(gmail_game_players_url(@game))
     %table.table.table-striped.players-list
       %thead
@@ -63,21 +81,8 @@
           %th 
             = link_to 'Invited', '#', class: 'btn'
             = link_to 'Add player', new_game_player_path(@game), remote: true, class: 'btn' 
+          %th
       %tbody
         - @game.game_players.invited.each do |assoc|
           = render partial: 'players/player', locals: {gameplayer: assoc}
     
-.row
-  .span3.pull-right
-    / = link_to 'Send invites', send_invites_game_path(@game), method: :post, class: 'btn'
-
-  - if user_signed_in?
-    = simple_form_for :group, url: add_from_group_game_path(@game) do |f|
-      = f.input :group_id, as: :select, collection: current_user.groups, include_blank: false, label: 'Add from group:'
-      = f.submit 'Add'
-  - if user_signed_in? && @game.players.any?
-    = link_to 'Add players to new group', new_group_path(game_id: @game.id), class: 'btn'
-%br
-= link_to 'Edit', edit_game_path(@game)
-\|
-= link_to 'Back', games_path
