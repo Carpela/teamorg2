@@ -1,4 +1,9 @@
 class Player < ActiveRecord::Base
   attr_accessible :email, :name, :phone
-  has_and_belongs_to_many :games
+  belongs_to :team
+  has_many :games, through: :game_players
+  has_many :game_players
+
+  validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
+
 end

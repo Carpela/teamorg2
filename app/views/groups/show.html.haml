@@ -1,0 +1,33 @@
+/ %p#notice= notice
+%h1 Group #{@group.name}
+.row-fluid
+  .span3
+    %table.table.table-striped
+      %thead
+        %tr
+          %th 
+            .btn.btn-success
+              Players
+          %th 
+      %tbody
+        - @group.players.each do |player|
+          %tr
+            %td
+              = player.name
+-#%p
+-#  = link_to 'Add player', new_game_player_path(@game)
+- if @player.errors.any?
+  #error_explanation
+    %h2= "#{pluralize(@player.errors.count, "error")} prohibited this game from being saved:"
+    %ul
+      - @player.errors.full_messages.each do |msg|
+        %li= msg
+= simple_form_for @player, url: add_player_group_path(@group) do |f|
+  = f.input :email
+  = f.input :name
+  = f.input :phone
+  = f.submit 'Add player'
+%br
+= link_to 'Edit', edit_group_path(@group)
+\|
+= link_to 'Back', groups_path

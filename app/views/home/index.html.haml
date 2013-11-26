@@ -1,28 +1,41 @@
-.container
-.home-unit
-  = image_tag "home.png"
+.row
+  .span12
+    .home-unit
+      .span8.offset2
+        /= image_tag "home.png"
+        .blurb
+          %h3 Organising games for your mates is a pain. 
+          %h3 What we do
+          %ul
+            %li set games up
+            %li invite people to them 
+            %li let people say whether they can play
+          %h3 What we don't do
+          %ul
+            %li No complicated login process.
+            %li No trying to overload you with a social experience
+            %li No messing about.
 .row
   .span4
-    .hi-unit
-      =image_tag "thumb_1.png",:alt => "image" 
+    .grassleft
     %h4 Football
     %p Jumpers for Goalposts? Striding out onto Wembley's hallowed turf...
     %p
-      %a.btn{:href => "#"} View details &raquo;
+      %a.btn{:href => "/games/new"} Organise a game &raquo;
   .span4
-    .hi-unit
-      =image_tag "thumb_2.png", :alt => "image"
+    .grasscentre
+      /=image_tag "thumb_2.png", :alt => "image"
     %h4 Cricket
     %p Ah! The crack of leather on willow
     %p
-      %a.btn{:href => "#"} View details &raquo;
+      %a.btn{:href => "/games/new"} Organise a game &raquo;
   .span4
-    .hi-unit
+    .grassright
       =image_tag "thumb_3.png", :alt => "image"
     %h4 Rugby
     %p For those weekends when nothing compares to pissing in your mate's beer...
     %p
-      %a.btn{:href => "#"} View details &raquo;
+      %a.btn{:href => "/games/new"} Organise a game &raquo;
 %hr.h-edge/
 / <!--      %footer
 /         %p.pull-left &copy; Copyright Holder 2012

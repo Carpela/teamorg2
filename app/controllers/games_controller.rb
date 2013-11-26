@@ -1,28 +1,4 @@
-class GamesController < ApplicationController
-  # GET /games
-  # GET /games.json
-  def index
-    @games = Game.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @games }
-    end
-  end
-
-  # GET /games/1
-  # GET /games/1.json
-  def show
-    @game = Game.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @game }
-    end
-  end
-
-  # GET /games/new
-  # GET /games/new.json
+class GamesController < InheritedResources::Base
   def new
     @game = Game.new
 
@@ -31,20 +7,12 @@ class GamesController < ApplicationController
       format.json { render json: @game }
     end
   end
-
-  # GET /games/1/edit
-  def edit
-    @game = Game.find(params[:id])
-  end
-
-  # POST /games
-  # POST /games.json
   def create
     @game = Game.new(params[:game])
 
     respond_to do |format|
       if @game.save
-        format.html { redirect_to @game, notice: 'Game was successfully created.' }
+        format.html { redirect_to @game, notice: 'game was successfully created.' }
         format.json { render json: @game, status: :created, location: @game }
       else
         format.html { render action: "new" }
@@ -53,44 +21,46 @@ class GamesController < ApplicationController
     end
   end
 
-
-
-
-  def addplayer(input)
-    
-    if @players.include?(input)
-
-      @game.players << players.(input)
-    else 
-      g = player.create(:name => input)
-      @game.players << g
-    end  
+  def send_invites
+    @game = Game.find params[:id]
+    @game.game_players.players.each do |game_player|
+      PlayersMailer.invites(game_player).deliver
+    end
+    redirect_to game_path(@game), notice: 'Invites were sent'
   end
-  # PUT /games/1
-  # PUT /games/1.json
-  def update
-    @game = Game.find(params[:id])
 
-    respond_to do |format|
-      if @game.update_attributes(params[:game])
-        format.html { redirect_to @game, notice: 'Game was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @game.errors, status: :unprocessable_entity }
+  def send_chasing_up
+    @game = Game.find params[:id]
+    @count = 0
+    @game.game_players.where(:status => ["available", "players"]).each do |game_player|
+      PlayersMailer.chasing_up(game_player).deliver
+      @count += 1
+    end
+    redirect_to game_path(@game), notice: 'Chase Up sent' + @count.to_s
+   
+  end
+
+  def add_from_group
+    if params[:group][:group_id].present?
+      game = Game.find params[:id]
+      group = current_user.groups.find params[:group][:group_id]
+      # Prevent duplicates
+      group.players.each do |player|
+        game.game_players.create player: player unless game.game_players.exists?(player_id: player.id)
       end
     end
+    redirect_to game, notice: 'Players were successfully added from group'
   end
 
-  # DELETE /games/1
-  # DELETE /games/1.json
-  def destroy
-    @game = Game.find(params[:id])
-    @game.destroy
-
-    respond_to do |format|
-      format.html { redirect_to games_url }
-      format.json { head :no_content }
-    end
+  def email_form
+    @game = Game.find params[:id]
+    @invite_email = InviteEmail.new game: @game
   end
+
+  def send_emails
+    @game = Game.find params[:id]
+    @invite_email = InviteEmail.new params[:invite_email].merge(game: @game)
+    @invite_email.save
+  end
+
 end

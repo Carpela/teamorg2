@@ -1,0 +1,18 @@
+%h3 Email form
+= simple_form_for @invite_email, url: send_emails_game_path(@game), remote: true, validate: true do |f|
+  = f.input :text, as: :text, input_html: {rows: 7, cols: 20, value: @invite_email.populate_text}
+  = f.input :include_game_info, as: :boolean, label: false, inline_label: true, input_html: {checked: true}
+  = f.input :include_signup_links, as: :boolean, label: false, inline_label: true, input_html: {checked: true}
+  = f.input :groups, as: :check_boxes, collection: ['Invited', 'Available', 'Unavailable', 'Selected'], checked: ['Invited', 'Available']
+  .clearfix
+  = f.submit 'Send', disable_with: 'Sending...', class: 'btn btn-success'
+
+/ :javascript
+/   $('#invite_email_include_game_info').on('change', function(){
+/     if $(this).prop('checked'){
+/       $('#invite_email_text').val(with_game_info)
+/     }
+/     else{
+/       $('#invite_email_text').val(without_game_info)
+/     }
+/   });

@@ -8,13 +8,25 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require bootstrap-timepicker
+ *= require jquery.ui.all
+ *= require app
+ *= require fancybox
  *= require_self
-
  *= require_tree .
 */
 
 @import "bootstrap";
 
+table {
+        width:100% !important;
+        max-width:100% !important;
+    }
+    
+.time {
+  width: 60px;
+  display:inline;
+}
 .brand {
   float: left;
   padding-right: 8px;
