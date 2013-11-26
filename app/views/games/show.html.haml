@@ -56,22 +56,20 @@
             %td
               = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :available), {:class => 'btn btn-primary btn-mini'}
   .span3
-    = link_to 'Add player', new_game_player_path(@game), remote: true
     / = link_to 'Get from gmail contacts', GmailContacts::Google.authentication_url(gmail_game_players_url(@game))
     %table.table.table-striped.players-list
       %thead
         %tr
           %th 
-            .btn
-              Invited
-          %th 
+            = link_to 'Invited', '#', class: 'btn'
+            = link_to 'Add player', new_game_player_path(@game), remote: true, class: 'btn' 
       %tbody
         - @game.game_players.invited.each do |assoc|
           = render partial: 'players/player', locals: {gameplayer: assoc}
     
 .row
   .span3.pull-right
-    = link_to 'Send invites', send_invites_game_path(@game), method: :post, class: 'btn'
+    / = link_to 'Send invites', send_invites_game_path(@game), method: :post, class: 'btn'
 
   - if user_signed_in?
     = simple_form_for :group, url: add_from_group_game_path(@game) do |f|
