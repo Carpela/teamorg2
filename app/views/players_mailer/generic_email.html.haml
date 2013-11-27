@@ -5,3 +5,5 @@
     = link_to "I'm available", game_game_player_change_status_url(@game_player.game, @game_player, status: :available)
   %p
     = link_to "Sorry, I can't make it", game_game_player_change_status_url(@game_player.game, @game_player, status: :unavailable)
+  %p
+    = link_to "Game", game_path(@game)
