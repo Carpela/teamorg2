@@ -6,13 +6,13 @@ Website:       www.eamdevelopers.com
 
 -----------------------------------*/
 body {
-	background: url('/assets/light_wool.png') repeat;
+	background: url('light_wool.png') repeat;
 }
 header {
 	margin: 40px 0 30px 0; /*trbl*/
 	height: 90px;
 	background-color: #f3f3f3;
-	background-image: url('/assets/m-down.gif'), url('/assets/m-up.gif'),  url('/assets/tex2res5.png');
+	background-image: url('m-down.gif'), url('m-up.gif'),  url('tex2res5.png');
 	background-repeat: repeat-x, repeat-x, repeat;
 	background-position: top, bottom;
 }
@@ -26,13 +26,13 @@ hr.h-edge {
   border-top: 1px solid #ffffff;
   border-bottom: 1px solid #eeeeee;
   height: 15px;
-  background: url('/assets/m-up.gif') top repeat-x;
+  background: url('m-up.gif') top repeat-x;
 }
 .logo{
 	padding: 0;
 	margin-top: -35px;
 	position: absolute;
-	background:url('/assets/logo.png');
+	background:url('logo.png');
 }
 .logo/*,.logo img*/{
 	width:156px;
@@ -57,7 +57,7 @@ nav {
 .navbar .nav > li > a:hover {
 	background-color: transparent;
 	color: #d5d5d5;
-	background: url('/assets/nav-bg.png') repeat;
+	background: url('nav-bg.png') repeat;
 	text-decoration: none;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -67,7 +67,7 @@ nav {
 .navbar .nav .active > a:hover {
 	color: #d5d5d5;
 	text-decoration: none;
-	background: url('/assets/nav-bg.png') repeat;
+	background: url('nav-bg.png') repeat;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px; 
@@ -82,7 +82,7 @@ nav {
 	width: 940px;
 	margin-bottom: 30px;
     /*background-color: #CCC;*/
-  background: url('/assets/home.png');
+  background: url('home.png');
 }
 .blurb {
 	margin-top: 50px;
@@ -109,7 +109,7 @@ nav {
 	width: 300px;
 	margin-bottom: 10px;
 	border-radius: 6px;
-	background-image: url(/assets/football.png), url('/assets/thumb_1.png');
+	background-image: url(football.png), url('thumb_1.png');
 	background-size: auto 100%, 100% 100%;
 	background-repeat: no-repeat, no-repeat;
 	background-position: center,center;
@@ -122,7 +122,7 @@ nav {
 	width: 300px;
 	margin-bottom: 10px;
 	border-radius: 6px;
-	background: url('/assets/Cricketball.png'), url('/assets/thumb_2.png');
+	background: url('Cricketball.png'), url('thumb_2.png');
 	background-size: auto 50%, 100% 100%;
 	background-repeat: no-repeat, no-repeat;
 	background-position: center,center;
@@ -135,10 +135,10 @@ nav {
 	width: 300px;
 	margin-bottom: 10px;
 	border-radius: 6px;
-	background: url('/assets/thumb_3.png');
+	background: url('thumb_3.png');
 }
 .football {
-	background: url('/assets/football.png');
+	background: url('football.png');
 	height:140px;
 	width:300px;
 	background-size: 100% 100%;
