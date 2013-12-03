@@ -2,6 +2,7 @@
   %td
     = link_to gameplayer.player.name, edit_player_path(gameplayer.player)
   %td
-    = link_to '<-', game_game_player_change_status_url(gameplayer.game, gameplayer, status: :available), {:class => 'btn btn-primary btn-mini'}
-    = link_to '<-', game_game_player_change_status_url(gameplayer.game, gameplayer, status: :unavailable), {:class => 'btn btn-danger btn-mini'}
-    = link_to 'X', game_game_player_path(gameplayer.game, gameplayer), {:confirm => "Are you sure you want to delete this player?", :method => :delete, :class => 'btn btn-mini'}
+    - if user_signed_in?
+      = link_to '<-', game_game_player_change_status_url(gameplayer.game, gameplayer, status: :available), {:class => 'btn btn-primary btn-mini'}
+      = link_to '<-', game_game_player_change_status_url(gameplayer.game, gameplayer, status: :unavailable), {:class => 'btn btn-danger btn-mini'}
+      = link_to 'X', game_game_player_path(gameplayer.game, gameplayer), {:confirm => "Are you sure you want to delete this player?", :method => :delete, :class => 'btn btn-mini'}

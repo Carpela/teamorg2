@@ -41,7 +41,8 @@
             %td
               = link_to assoc.player.name, edit_player_path(assoc.player)
             %td
-              = link_to '->', game_game_player_change_status_url(assoc.game, assoc, status: :available), {:class => 'btn btn-primary btn-mini'}
+              - if user_signed_in?
+                = link_to '->', game_game_player_change_status_url(assoc.game, assoc, status: :available), {:class => 'btn btn-primary btn-mini'}
   .span3
     %table.table.table-striped
       %thead
@@ -56,8 +57,9 @@
             %td
               = link_to assoc.player.name, edit_player_path(assoc.player)
             %td 
-              = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :selected), {:class => 'btn btn-success btn-mini'}
-              = link_to '->', game_game_player_change_status_url(assoc.game, assoc, status: :unavailable), {:class => 'btn btn-danger btn-mini'}
+              - if user_signed_in?
+                = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :selected), {:class => 'btn btn-success btn-mini'}
+                = link_to '->', game_game_player_change_status_url(assoc.game, assoc, status: :unavailable), {:class => 'btn btn-danger btn-mini'}
   .span3
     %table.table.table-striped
       %thead
@@ -72,7 +74,8 @@
             %td
               = link_to assoc.player.name, edit_player_path(assoc.player)
             %td
-              = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :available), {:class => 'btn btn-primary btn-mini'}
+              - if user_signed_in?
+                = link_to '<-', game_game_player_change_status_url(assoc.game, assoc, status: :available), {:class => 'btn btn-primary btn-mini'}
   .span4
     / = link_to 'Get from gmail contacts', GmailContacts::Google.authentication_url(gmail_game_players_url(@game))
     %table.table.table-striped.players-list
