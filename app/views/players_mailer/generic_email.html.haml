@@ -1,9 +1,15 @@
 %p= simple_format @text
 
 - if @include_signup_links == '1'
+  
+  %h4
+    Let us know if you're available by clicking the links below:
   %p
     = link_to "I'm available", game_game_player_change_status_url(@game_player.game, @game_player, status: :available)
   %p
     = link_to "Sorry, I can't make it", game_game_player_change_status_url(@game_player.game, @game_player, status: :unavailable)
+  
+  %p 
+    Or
   %p
-    = link_to "Game", game_path(@game)
+    = link_to "Go to the game page", game_path(@game)

@@ -13,7 +13,7 @@ class PlayersMailer < ActionMailer::Base
     @game = @game_player.game
     @include_game_info = include_game_info
     @include_signup_links = include_signup_links
-    subject = "Football #{@game.location} #{@game.time.strftime("%H:%M") +' '+ @game.date.to_s}"
+    subject = "Football #{@game.date.strftime("%a %d/%m/%Y") +' '+ @game.time.strftime("%H:%M%p")} #{@game.location}"
     mail to: game_player.player.email, subject: subject
   end
 end
