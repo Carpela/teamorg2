@@ -1,15 +1,28 @@
+%p Hi #{@game_player.player.name.split[0...1].join(' ')},
+%p Are you up for the game on #{@game_player.game.date.strftime("%A")}?
+
 %p= simple_format @text
 
 - if @include_signup_links == '1'
   
-  %h4
+  -if @game_player.status == 'invited'
+    %h3
+      You haven't replied yet
+  - else
+    %h3
+      You're currently #{@game_player.status}
+  %p
     Let us know if you're available by clicking the links below:
-  %p
-    = link_to "I'm available", game_game_player_change_status_url(@game_player.game, @game_player, status: :available)
-  %p
-    = link_to "Sorry, I can't make it", game_game_player_change_status_url(@game_player.game, @game_player, status: :unavailable)
   
-  %p 
-    Or
+
+
+  -if @game_player.status != 'available'
+    -if @game_player.status != 'selected'   
+      %p
+        = link_to "I'm available", game_game_player_change_status_url(@game_player.game, @game_player, status: :available), class: "btn btn-primary"
+  - if @game_player.status != 'unavailable'
+    %p
+      = link_to "Sorry, I can't make it", game_game_player_change_status_url(@game_player.game, @game_player, status: :unavailable), class: "btn btn-delete"
+  
   %p
     = link_to "Go to the game page", game_path(@game)
