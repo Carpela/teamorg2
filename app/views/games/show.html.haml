@@ -10,7 +10,7 @@
     \|
     = link_to 'Back', games_path
     
-    - if user_signed)in?
+    - if user_signed_in?
       %p
         = link_to 'Send an email', email_form_game_path(@game), remote: true, class: 'btn'
   .span5
