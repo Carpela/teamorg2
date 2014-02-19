@@ -17,7 +17,7 @@ class InviteEmail
   end
 
   def populate_text(with_game_info = true)
-    text = "Are you up for the game on #{@game_player.game.date.strftime("%A")}?"
+    text = "Are you up for the game on #{@game.date.strftime("%A")}?"
     if with_game_info
       text += "Location: #{game.location}\n"
       text += "Date: #{@game.date.strftime("%A %d/%m/%Y")}\n"
