@@ -10,7 +10,6 @@
  *
  *= require bootstrap-timepicker
  *= require jquery.ui.all
- *= require app
  *= require fancybox
  *= require_self
  *= require_tree .
@@ -22,7 +21,9 @@ table {
         width:100% !important;
         max-width:100% !important;
     }
-    
+.centre {
+  text-align: center;
+}
 .time {
   width: 60px;
   display:inline;
@@ -30,6 +31,9 @@ table {
 .brand {
   float: left;
   padding-right: 8px;
+}
+ul li{
+  list-style-type: none;
 }
 ul.nav {
   list-style: none;

@@ -3,8 +3,15 @@ class GamePlayersController < ApplicationController
     return unless %w(available unavailable selected).include?(params[:status])
     @gameplayer = GamePlayer.find(params[:game_player_id])
     @gameplayer.update_attributes status: params[:status]
+    
+    if @gameplayer.status_was =='available' || 'selected'
+      if params[:status] == 'unavailable'
+        AlertMailer.dropout_notification(@gameplayer.player).deliver
+      end
+    end
     redirect_to game_path(@gameplayer.game), notice: @gameplayer.player.name + ' is ' + params[:status]
   end
+
   def destroy
     @gameplayer = GamePlayer.find(params[:id])
     @game = @gameplayer.game

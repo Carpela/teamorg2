@@ -26,12 +26,6 @@ gem 'anjlab-bootstrap-rails'
 
 gem "haml", ">= 3.1.7"
 
-group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'quiet_assets'
-end
-
 gem "haml-rails", ">= 0.3.5", :group => :development
 gem "hpricot", ">= 0.8.6", :group => :development
 gem "ruby_parser", ">= 3.1.1", :group => :development

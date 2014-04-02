@@ -6,8 +6,8 @@
         - @game.errors.full_messages.each do |msg|
           %li= msg
   = f.input :location, :placeholder => 'Location', :label => false
-  = f.input :sides, :placeholder => 'Number of Teams', :label => false
-  = f.input :format, :placeholder => 'Players per Team', :label => false
+  / = f.input :sides, :placeholder => 'Number of Teams', :label => false
+  / = f.input :format, :placeholder => 'Players per Team', :label => false
   = f.input :date, :as => :datepicker, :input_html => { :type => "text" }, :placeholder => 'When?', :label => false
   = f.input :time, :as => :time, :minute_step => 15
  
