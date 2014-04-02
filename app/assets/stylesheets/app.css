@@ -5,43 +5,43 @@ Developer:     Joseph (@JWChiwa)
 Website:       www.eamdevelopers.com 
 
 -----------------------------------*/
-body {
+/*body {
 	background: url('light_wool.png') repeat;
-}
-header {
-	margin: 40px 0 30px 0; /*trbl*/
+}*/
+/*header {
+	margin: 40px 0 30px 0;
 	height: 90px;
 	background-color: #f3f3f3;
 	background-image: url('m-down.gif'), url('m-up.gif'),  url('tex2res5.png');
 	background-repeat: repeat-x, repeat-x, repeat;
 	background-position: top, bottom;
-}
-h1, h2, h3, h4 , h5, h6 {
+}*/
+/*h1, h2, h3, h4 , h5, h6 {
 	font-family: 'Droid Sans', sans-serif;
 	text-shadow: 0 1px 1px #F7F7F7;
-}
-hr.h-edge {
+}*/
+/*hr.h-edge {
   margin: 18px 0;
   border: 0;
   border-top: 1px solid #ffffff;
   border-bottom: 1px solid #eeeeee;
   height: 15px;
   background: url('m-up.gif') top repeat-x;
-}
-.logo{
+}*/
+/*.logo{
 	padding: 0;
 	margin-top: -35px;
 	position: absolute;
 	background:url('logo.png');
-}
-.logo/*,.logo img*/{
+}*/
+/*.logo,.logo img{
 	width:156px;
 	height:155px;
-}
-.logo img {
+}*/
+/*.logo img {
 	display:none;
-}
-nav {
+}*/
+/*nav {
 	position: relative;
 	margin-top:25px;
 	font-size: 13px;
@@ -71,23 +71,22 @@ nav {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px; 
-}
+}*/
 .home-unit, .hi-unit, nav ul li a  {
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 	border-radius: 6px;
 }
 .home-unit {
-	height: 350px;
-	width: 940px;
+	
+	min-height: 350px;
+	
 	margin-bottom: 30px;
-    /*background-color: #CCC;*/
   background: url('home.png');
 }
 .blurb {
 	margin-top: 50px;
-	padding-right: 10px; 
-	padding-left: 10px;
+	padding: 10px, 10px,10px,10px;
 	text-align: center;
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
@@ -155,7 +154,7 @@ nav {
 	border-bottom: 2px solid #999;
 	margin-bottom: 10px;
 }
-.entry {
+/*.entry {
 	margin-bottom: 20px;
 }
 .entry:hover h2.entry-title a {
@@ -171,7 +170,8 @@ nav {
   -ms-transition: background-position 0.1s linear;
   -o-transition: background-position 0.1s linear;
   transition: background-position 0.1s linear;
-}
+}*/
+
 h1.entry-title {
 	margin-bottom: 0px;
 } 

@@ -5,6 +5,6 @@ class Game < ActiveRecord::Base
   belongs_to :user
   has_many :players, through: :game_players
   has_many :game_players
-
+  validates_presence_of :date, :time, :location
   accepts_nested_attributes_for :players
 end

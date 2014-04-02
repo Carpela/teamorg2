@@ -1,41 +1,42 @@
-.row
+.row-fluid.home-unit
   .span12
-    .home-unit
-      .span8.offset2
-        /= image_tag "home.png"
-        .blurb
-          %h3 Organising games for your mates is a pain. 
-          %h3 What we do
-          %ul
-            %li set games up
-            %li invite people to them 
-            %li let people say whether they can play
-          %h3 What we don't do
-          %ul
-            %li No complicated login process.
-            %li No trying to overload you with a social experience
-            %li No messing about.
-.row
+    .span8.offset2
+      /= image_tag "home.png"
+      .blurb
+        %h3 Organising games for your mates is a pain. 
+        %h3 What we do
+        %ul
+          %li set games up
+          %li invite people to them 
+          %li let people say whether they can play
+        %h3 What we don't do
+        %ul
+          %li No complicated login process.
+          %li No trying to overload you with a social experience
+          %li No messing about
+      .centre
+        = link_to 'Create A New Game', new_game_path, {:class => 'btn btn-primary btn-large'}
+.row-fluid
   .span4
     .grassleft
     %h4 Football
     %p Jumpers for Goalposts? Striding out onto Wembley's hallowed turf...
     %p
-      %a.btn{:href => "/games/new"} Organise a game &raquo;
+      = link_to 'Create A New Game', new_game_path, {:class => 'btn btn-primary btn-large'}
   .span4
     .grasscentre
       /=image_tag "thumb_2.png", :alt => "image"
     %h4 Cricket
     %p Ah! The crack of leather on willow
     %p
-      %a.btn{:href => "/games/new"} Organise a game &raquo;
+      = link_to 'Create A New Game', new_game_path, {:class => 'btn btn-primary btn-large'}
   .span4
     .grassright
       =image_tag "thumb_3.png", :alt => "image"
     %h4 Rugby
     %p For those weekends when nothing compares to pissing in your mate's beer...
     %p
-      %a.btn{:href => "/games/new"} Organise a game &raquo;
+      = link_to 'Create A New Game', new_game_path, {:class => 'btn btn-primary btn-large'}
 %hr.h-edge/
 / <!--      %footer
 /         %p.pull-left &copy; Copyright Holder 2012
