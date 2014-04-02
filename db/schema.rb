@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(:version => 20131122143836) do
     t.datetime "updated_at",                        :null => false
     t.integer  "game_id"
     t.integer  "player_id"
-    t.string   "status",     :default => "players"
+    t.string   "status",     :default => "invited"
   end
 
   add_index "game_players", ["status"], :name => "index_game_players_on_status"

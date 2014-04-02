@@ -3,7 +3,7 @@ class InviteEmail
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
-  attr_accessor :text, :include_game_info, :include_signup_links, :groups, :game
+  attr_accessor :text, :include_game_info, :include_signup_links, :groups, :game, :subject
   validates :text, presence: true
 
   def initialize(attributes = {})
@@ -15,7 +15,9 @@ class InviteEmail
   def persisted?
     false
   end
-
+  def populate_subject
+    subject = "Game #{@game.date.strftime("%a %d/%m/%Y") +' '+ @game.time.strftime("%H:%M%p")} #{@game.location}"
+  end
   def populate_text(with_game_info = true)
     text = "Are you up for the game on #{@game.date.strftime("%A")}?"
     if with_game_info
@@ -31,7 +33,7 @@ class InviteEmail
     groups.each do |group|
       next if group.blank?
       game.game_players.send(group.downcase.to_sym).each do |gameplayer|
-        PlayersMailer.generic_email(gameplayer, text, include_game_info, include_signup_links).deliver
+        PlayersMailer.generic_email(gameplayer, text, include_game_info, include_signup_links, subject).deliver
       end
     end
   end
