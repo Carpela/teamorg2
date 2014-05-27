@@ -4,7 +4,7 @@ class GamePlayersController < ApplicationController
     @gameplayer = GamePlayer.find(params[:game_player_id])
     @gameplayer.update_attributes status: params[:status]
     
-    if @gameplayer.status_was =='available' || 'selected'
+    if @gameplayer.status_was =='available' || @gameplayer.status_was 'selected'
       if params[:status] == 'unavailable'
         AlertMailer.dropout_notification(@gameplayer.player).deliver
       end
