@@ -1,14 +1,19 @@
 class GamePlayersController < ApplicationController
   def change_status
-    return unless %w(available unavailable selected).include?(params[:status])
+    return unless %w(available unavailable selected invited).include?(params[:status])
     @gameplayer = GamePlayer.find(params[:game_player_id])
-    @gameplayer.update_attributes status: params[:status]
+    # @gameplayer.update_attributes status: params[:status]
     
-    if @gameplayer.status_was =='available' || @gameplayer.status_was 'selected'
+    @gameplayer.status = params[:status]
+    logger.info("testing dropout")
+    if @gameplayer.status_was =='available'
+      logger.info("player was available")
       if params[:status] == 'unavailable'
+        logger.info("dropping out")
         AlertMailer.dropout_notification(@gameplayer.player).deliver
       end
     end
+    @gameplayer.save
     redirect_to game_path(@gameplayer.game), notice: @gameplayer.player.name + ' is ' + params[:status]
   end
 

@@ -2,30 +2,41 @@
 
 .row-fluid
   .span5
-    %p
-      = @game.location
-    %p
-      = @game.time.strftime("%H:%M") +' '+ @game.date.to_s
-    = link_to 'Edit', edit_game_path(@game)
-    \|
-    = link_to 'Back', games_path
-    
-    - if user_signed_in?
-      %p
-        = link_to 'Send an email', email_form_game_path(@game), remote: true, class: 'btn'
+    #accordion2.accordion
+      .accordion-group
+        .accordion-heading
+          %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", href: "#collapseOne"}
+            = "Details for game on #{@game.date}"
+        #collapseOne.accordion-body.collapse
+          .accordion-inner
+            %p
+              = @game.location
+            %p
+              = @game.time.strftime("%H:%M") +' '+ @game.date.to_s
+            = link_to 'Edit', edit_game_path(@game)
+            \|
+            = link_to 'Back', games_path
+            
+            - if user_signed_in?
+              %p
+    = link_to 'Send an email', email_form_game_path(@game), remote: true, class: 'btn'
   .span5
-
-    - if user_signed_in?
-      = simple_form_for :group, url: add_from_group_game_path(@game) do |f|
-        .row
-          =f.label :group_id, label: 'Add from group:'
-          .span4
-            = f.input :group_id, as: :select, collection: current_user.groups, required: false, label: false
-          .span1
-            = f.submit 'Add'
-          .span5    
-            - if user_signed_in? && @game.players.any?
-              = link_to 'Add players to new group', new_group_path(game_id: @game.id), class: 'btn'
+    #accordion2.accordion
+      .accordion-group
+        .accordion-heading
+          %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", href: "#collapseTwo"}
+            Groups
+        #collapseTwo.accordion-body.collapse
+          .accordion-inner
+            .well
+              - if user_signed_in?
+                = simple_form_for :group, url: add_from_group_game_path(@game) do |f|
+                  =f.label :group_id, label: 'Add from group:'
+             
+                  = f.input :group_id, as: :select, collection: current_user.groups, required: true, label: false
+                  = f.submit 'Add'
+              - if user_signed_in? && @game.players.any?
+                = link_to 'Add players to new group', new_group_path(game_id: @game.id), class: 'btn'
     
 
 .row-fluid.row-fluid
