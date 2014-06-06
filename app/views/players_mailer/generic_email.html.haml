@@ -24,4 +24,4 @@
       = link_to "Sorry, I can't make it", game_game_player_change_status_url(@game_player.game, @game_player, status: :unavailable), class: "btn btn-delete"
   
   %p
-    = link_to "Go to the game page", game_path(@game)
+    = link_to "Go to the game page", game_path(@game), :only_path => false
