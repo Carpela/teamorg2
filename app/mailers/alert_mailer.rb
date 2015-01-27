@@ -8,6 +8,6 @@ class AlertMailer < ActionMailer::Base
   #
   def dropout_notification(player)
     @greeting = "#{player.name} has dropped out..."
-    mail (to: "keiran@carpela.com", cc: player.email)
+    mail(to: "keiran@carpela.com", cc: player.email)
   end
 end
