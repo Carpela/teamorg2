@@ -1,6 +1,8 @@
 Teamorg2::Application.routes.draw do
   resources :teams
   resources :players
+  post "gocardless/webhook"
+  get "gocardless/confirm"
   resources :games do
     member do
       get 'email_form'

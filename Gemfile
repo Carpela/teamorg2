@@ -49,7 +49,7 @@ gem 'gmail-contacts', :require => "gmail-contacts"
 gem 'fancybox-rails'
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
-
+gem 'gocardless'
 group :development do
   gem 'letter_opener'
   gem 'better_errors'
