@@ -5,4 +5,6 @@ GoCardless.account_details = {
   :merchant_id => ENV['GC_MERCHANT_ID']
 }
 
-GoCardless.environment = :sandbox
+if Rails.env.development?
+  GoCardless.environment = :sandbox
+end
